@@ -43,8 +43,8 @@ def get_video_id(url):
 groq_api_key = st.secrets["GROQ_API_KEY"]
 
 ## sstreamlit APP
-st.set_page_config(page_title="LangChain: Summarize Text From YT or Website", page_icon="🦜")
-st.title("🦜 LangChain: Summarize Text From YT or Website")
+st.set_page_config(page_title="Summarize Text From YT or Website", page_icon="🦜")
+st.title("🦜 URL Content Summarization")
 st.subheader('Summarize URL')
 
 
@@ -123,5 +123,6 @@ if st.button("Summarize the Content from YT or Website"):
         except Exception as e:
             st.exception(f"Exception:{e}")
                     
+
 
 
