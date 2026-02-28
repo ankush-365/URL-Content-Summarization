@@ -45,7 +45,7 @@ groq_api_key = st.secrets["GROQ_API_KEY"]
 ## sstreamlit APP
 st.set_page_config(page_title="Summarize Text From YT or Website", page_icon="🦜")
 st.title("🦜 URL Content Summarization")
-st.subheader('Summarize URL')
+st.subheader('Paste the URL')
 
 
 generic_url=st.text_input("URL",label_visibility="collapsed")
@@ -60,7 +60,7 @@ Content:{text}
 
 prompt=PromptTemplate(template=prompt_template,input_variables=["text"])
 
-if st.button("Summarize the Content from YT or Website"):
+if st.button("Summarize"):
     ## Validate all the inputs
     if not groq_api_key.strip() or not generic_url.strip():
         st.error("Please provide the information to get started")
@@ -91,7 +91,7 @@ if st.button("Summarize the Content from YT or Website"):
 
                     if transcript_text:
                         summary=chain.invoke({"transcript": transcript_text})
-                        st.markdown("## Detailed Notes:")
+                        st.markdown("## Detailed Summary:")
                         st.success(summary)
 
 
@@ -117,12 +117,13 @@ if st.button("Summarize the Content from YT or Website"):
                         summaries.append(summary)
 
                     final_summary = " ".join(summaries)
-
+                    st.markdown("## Detailed Summary:")
                     st.success(final_summary)
 
         except Exception as e:
             st.exception(f"Exception:{e}")
                     
+
 
 
 
